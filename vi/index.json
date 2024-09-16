@@ -1,0 +1,239 @@
+[
+{
+	"uri": "https://thanhlong01052003.github.io/vi/1-prepare/",
+	"title": "Chuẩn bị",
+	"tags": [],
+	"description": "",
+	"content": "Chúng ta sẽ bắt đầu bằng việc thiết lập các tài nguyên cần thiết cho bài thực hành này. Chúng ta sẽ tạo các S3 buckets để lưu trữ các tệp và các IAM roles phù hợp cho các dịch vụ mà chúng ta sẽ sử dụng. Các tài nguyên này đã được định nghĩa trong một CloudFormation template.\nTruy cập vào CloudFormation trong AWS Console. Trong menu điều hướng bên phải, nhấn vào Create stack, chọn With new resources (standard). Tải về tệp này: CFN Template Chọn Upload a template file, và tải lên tệp mà bạn đã tải về. Nhấn Next. Đặt tên cho stack là sdlj-workshop. Nhấn Next cho đến khi bạn đến trang Review. Đánh dấu chọn vào ô I Acknowledge that AWS CloudFormation might create IAM resources with custom names. Nhấn Submit. Chờ các tài nguyên được cung cấp. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/",
+	"title": "Data Lake",
+	"tags": [],
+	"description": "",
+	"content": "Data Lake Serverless AWS Tổng quan Workshop này được chuẩn bị để hướng dẫn các bạn cách sử dụng các dịch vụ serverless của AWS để xây dựng một kiến trúc data lake serverless gốc đám mây và bền vững cho tương lai. Chúng ta sẽ sử dụng AWS Glue cho ETL và quản lý catalog dữ liệu, Amazon S3 để lưu trữ data lake, Amazon Athena để truy vấn dữ liệu và Amazon QuickSight để trực quan hóa dữ liệu.\nNội dung Chuẩn bị Khám phá và lập danh mục dữ liệu Khám phá dữ liệu Chuyển đổi dữ liệu Nâng cao dữ liệu Trực quan hóa dữ liệu Tổng kết Dọn dẹp "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/5-enriching/5.1-catalog-transformed-data/",
+	"title": "Lập danh mục dữ liệu đã chuyển đổi",
+	"tags": [],
+	"description": "",
+	"content": "Tạo một Glue Crawler Truy cập vào AWS Glue console. Trong menu điều hướng bên trái, nhấp vào Crawlers. Trên trang Crawlers, nhấp vào Create Crawler. Đặt tên nyc-yellow-tripdata-parquet-crawler cho crawler, sau đó nhấp vào Next. Trên màn hình Choose data sources and classifiers, chỉ định các thông tin sau và nhấp vào Next: Nhấp vào Add a data source. Chọn Data source – S3. Chọn Location of S3 data - In this account. Bao gồm đường dẫn S3 – s3://serverlessanalytics-[your-account-id]-transformed/nyc-taxi/yellow-tripdata. Đối với Subsequent crawler runs, chọn Crawl all sub-folders. Sau đó nhấp vào Add an S3 data source. Trên màn hình Configure security settings, chọn ServerlessAnalyticsRole từ Existing IAM role, nhấp vào Next. Trên màn hình Set output and scheduling, chọn nyctaxi_db làm cơ sở dữ liệu. Đối với lịch Crawler schedule, để tần suất là On demand, nhấp vào Next. Xem lại chi tiết của crawler, sau đó nhấp vào Create crawler. Trên trang Crawlers, chọn nyc-yellow-tripdata-parquet-crawler, sau đó nhấp vào Run. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/3-exploring/3.1-using-amazon-athena-for-the-first-time/",
+	"title": "Sử dụng Amazon Athena lần đầu tiên",
+	"tags": [],
+	"description": "",
+	"content": "Amazon Athena tự động lưu trữ kết quả truy vấn và thông tin metadata cho mỗi truy vấn được chạy tại một vị trí kết quả truy vấn mà bạn có thể chỉ định trong Amazon S3. Nếu cần thiết, bạn có thể truy cập các tệp trong vị trí này để làm việc với chúng. Bạn cũng có thể tải xuống các tệp kết quả truy vấn trực tiếp từ giao diện điều khiển Athena.\nTruy cập vào Athena console. Nhấn Launch query editor. Trên menu trên cùng, nhấn Workgroup: primary Chọn Settings, nhấn Browse S3 và chọn s3://serverlessanalytics-[your-account-id]-athena làm giá trị cho trường Location of query result - optional. Đi đến cuối trang, nhấn Save. Quay lại menu trên cùng, nhấn Editor để trở lại trang Query editor. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/6-visualizing/6.1-using-amazon-quicksight-for-the-first-time/",
+	"title": "Sử dụng Amazon QuickSight lần đầu tiên",
+	"tags": [],
+	"description": "",
+	"content": "Đăng ký tài khoản QuickSight Truy cập vào QuickSight console, nhấp vào Sign up for QuickSight. Hãy cung cấp các thông tin sau: Email for account notifications – [địa chỉ email của bạn] Select a region – US East (N. Virginia) QuickSight account name – sdl-jumpstart-your-[viết tắt tên bạn] Chọn Amazon S3, sau đó nhấp vào Choose S3 buckets. Chọn [tên-bucket-của-bạn]-transformed, rồi nhấp vào Finish. Trên trang Sign up for QuickSight, nhấp vào Finish.\nChờ vài giây để tài khoản QuickSight của bạn được tạo, sau đó nhấp vào Go to QuickSight.\n"
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/2-discovering_and_cataloging/2.1-create-a-glue-crawler/",
+	"title": "Tạo Glue Crawler",
+	"tags": [],
+	"description": "",
+	"content": "Glue Crawler là một tính năng tự động suy luận schema của cơ sở dữ liệu và bảng từ dữ liệu nguồn của bạn, sau đó lưu trữ metadata liên quan trong AWS Glue Data Catalog.\nTruy cập vào AWS Glue Console. Trong menu điều hướng bên trái, nhấn vào Crawlers. Trên trang Crawlers, nhấn vào Create crawler. Đặt nyc-taxi-crawler làm tên của crawler, sau đó nhấn Next. Trên trang Choose data sources and classifiers, chỉ định thông tin sau và sau đó nhấn Next: Nhấn Add a data source Chọn Data source – S3 Chọn Location of S3 data - In this account Include S3 path – s3://serverlessanalytics-[your-account-id]-raw/nyc-taxi/ Đối với Subsequent crawler runs, chọn Crawl all sub-folders Sau đó nhấn Add an S3 data source. Trên màn hình Configure security settings, chọn ServerlessAnalyticsRole từ Existing IAM role, sau đó nhấn Next. Trên màn hình Set output and scheduling, nhấn Add database. Đặt nyctaxi_db làm tên cơ sở dữ liệu duy nhất, sau đó nhấn Create database. Quay lại tab trước đó (Set output and scheduling), làm mới lựa chọn cho Target database và chọn cơ sở dữ liệu mới tạo nyctaxi_db. Chỉ định raw_ trong trường Table name prefix - optional. Đối với Crawler schedule, để tần suất On demand, sau đó nhấn Next. Xem lại chi tiết crawler, sau đó nhấn Create crawler. Tạo thành công "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.1-create-a-job-using-glue-studio/",
+	"title": "Tạo một công việc bằng Glue Studio",
+	"tags": [],
+	"description": "",
+	"content": " Đi đến Glue console. Trong bảng điều hướng bên trái, nhấp vào ETL jobs. Trên trang AWS Glue Studio, nhấp vào Visual ETL. Trong trang biên tập Glue Studio, đi đến tab Job details, đặt cấu hình sau: Name – Transform NYC Taxi Trip Data IAM Role – ServerlessAnalyticsRole Job bookmark – Disable Number of retries – 0 Job bookmark là tính năng của AWS Glue giúp duy trì thông tin trạng thái và ngăn chặn việc xử lý lại dữ liệu cũ. Nó cho phép công việc chỉ xử lý dữ liệu mới khi chạy lại theo khoảng thời gian đã định sẵn.\nNhấp vào Save. Quay lại tab Visual. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/2-discovering_and_cataloging/2.2-run-the-glue-crawler/",
+	"title": "Chạy Glue Crawler",
+	"tags": [],
+	"description": "",
+	"content": " Trên trang Crawlers, chọn nyc-taxi-crawler, sau đó nhấn Run crawler. Sau khi crawler hoàn thành thành công, bạn sẽ thấy giá trị 2 trong cột Tables changes from last run. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/2-discovering_and_cataloging/",
+	"title": "Khám phá và lập danh mục dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan Với nhiều nguồn dữ liệu và định dạng khác nhau trong data lake của bạn, điều quan trọng là phải có khả năng khám phá và lập danh mục để hiểu rõ hơn về dữ liệu mà bạn có và đồng thời cho phép tích hợp với các dịch vụ phân tích được thiết kế riêng của AWS.\nTrong bài thực hành này, chúng ta sẽ tạo AWS Glue Crawlers để tự động khám phá schema của dữ liệu được lưu trữ trong Amazon S3. Thông tin được khám phá về dữ liệu lưu trữ trong S3 sẽ được đăng ký vào AWS Glue Catalog. Điều này cho phép AWS Glue sử dụng thông tin được lưu trữ trong catalog để xử lý ETL. Nó cũng cho phép các dịch vụ AWS khác như Amazon Athena chạy các truy vấn trên dữ liệu được lưu trữ trong Amazon S3.\nGiới thiệu về AWS Glue AWS Glue là dịch vụ ETL (extract, transform, and load) không máy chủ, được quản lý hoàn toàn, giúp đơn giản hóa và tiết kiệm chi phí trong việc phân loại, làm sạch, làm giàu dữ liệu của bạn, và di chuyển nó một cách đáng tin cậy giữa các kho dữ liệu khác nhau. AWS Glue bao gồm các thành phần cốt lõi sau:\nData Catalog – một kho lưu trữ trung tâm để lưu trữ metadata về cấu trúc và hoạt động của các tài sản dữ liệu của bạn. ETL Engine – tự động tạo mã Scala hoặc Python. Jobs System – cung cấp hạ tầng được quản lý để điều phối luồng công việc ETL của bạn. Nội dung Tạo Glue Crawler Chạy Glue Crawler Xem xét metadata trong Glue Data Catalog "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.2-add-a-data-source/",
+	"title": "Thêm một nguồn dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Thêm dữ liệu Yellow Trips từ Amazon S3 Nhấp vào tab Source, chọn S3. Trong Data source – S3 bucket, chỉ định thông tin sau: Name – Yellow Trip Data Database – nyctaxi_db Table – raw_yellow_tripdata Nhấp vào Save. Hãy nhớ lưu công việc của bạn khi tiến hành xây dựng các bước chuyển đổi dữ liệu. Xem schema dữ liệu và xem trước dữ liệu Đi đến tab Output schema để xem xét schema dữ liệu. Đi đến tab Data preview để kiểm tra bộ dữ liệu mẫu trong khi chỉnh sửa công việc của bạn. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/6-visualizing/6.2-connect-to-a-data-source/",
+	"title": "Thêm một nguồn dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tạo dataset trong QuickSight Trên trang QuickSight, nhấp vào Datasets trong bảng điều hướng bên trái. Ở góc trên bên phải của màn hình, nhấp vào New dataset. Chọn Athena. Trong cửa sổ New Athena data source, cung cấp các thông tin sau: Data source name – Athena - SDL Jumpstart Athena workgroup – primary Sau đó, nhấp vào Create Data Source. Trong cửa sổ Choose your table, cung cấp các thông tin sau: Catalog – AwsDataCatalog Database – nyctaxi_db Tables – v_yellow_tripdata Sau đó, nhấp vào Select. Trong cửa sổ Finish dataset creation, chọn Import to SPICE for quicker analytics. Sau đó, nhấp vào Edit/Preview data. SPICE là viết tắt của Super-fast, Parallel, In-memory Calculation Engine. Nó được thiết kế để thực hiện nhanh chóng các tính toán nâng cao và phục vụ dữ liệu. Dung lượng SPICE được chia sẻ bởi tất cả người dùng QuickSight trong một AWS Region.\n"
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/5-enriching/5.2-validate-transformed-data/",
+	"title": "Xác thực dữ liệu đã chuyển đổi",
+	"tags": [],
+	"description": "",
+	"content": "Kiểm tra dữ liệu trong bảng yellow_tripdata Truy cập vào Athena console. Chọn Preview table để kiểm tra dữ liệu trong bảng yellow_tripdata. Trên trang Query editor, chạy các truy vấn sau để kiểm tra dữ liệu: SELECT COUNT(*) \u0026#34;Count\u0026#34; FROM yellow_tripdata; SELECT DATE_TRUNC(\u0026#39;month\u0026#39;, pickup_datetime) \u0026#34;Period\u0026#34;, COUNT(*) \u0026#34;Total Records\u0026#34; FROM yellow_tripdata GROUP BY DATE_TRUNC(\u0026#39;month\u0026#39;, pickup_datetime) ORDER BY 1; "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/3-exploring/3.2-preview-table-data/",
+	"title": "Xem trước dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Trên trang Query editor, nhấn vào biểu tượng menu hành động ⋮ bên cạnh bảng raw_yellow_tripdata, sau đó chọn Preview table. Xem xét dữ liệu. Thực hiện tương tự cho bảng raw_taxi_zone_lookup. Lưu ý rằng tất cả các giá trị chuỗi đều được bao quanh bởi dấu “. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/3-exploring/",
+	"title": "Khám phá dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan Trong bài thực hành này, chúng ta sẽ sử dụng Amazon Athena để khám phá dữ liệu và xác định các vấn đề về chất lượng dữ liệu. Chúng ta cũng sẽ học cách cập nhật thuộc tính của bảng trong AWS Glue Catalog.\nGiới thiệu về Amazon Athena Amazon Athena là một dịch vụ truy vấn tương tác giúp bạn dễ dàng phân tích dữ liệu trong Amazon S3 bằng cách sử dụng SQL tiêu chuẩn. Athena là một dịch vụ không máy chủ (serverless), vì vậy không cần phải thiết lập hoặc quản lý hạ tầng, và bạn có thể bắt đầu phân tích dữ liệu ngay lập tức. Bạn thậm chí không cần phải tải dữ liệu của mình vào Athena, vì nó làm việc trực tiếp với dữ liệu được lưu trữ trong S3.\nNội dung Sử dụng Amazon Athena lần đầu tiên Xem trước dữ liệu Làm việc với dữ liệu CSV đặt trong dấu ngoặc kép Chạy các truy vấn SQL để khám phá dữ liệu "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/3-exploring/3.3-working-with-csv-data-enclosed-in-quotes/",
+	"title": "Làm việc với dữ liệu CSV đặt trong dấu ngoặc kép",
+	"tags": [],
+	"description": "",
+	"content": "Các tệp CSV đôi khi có dấu ngoặc kép bao quanh các giá trị dữ liệu dự định cho mỗi cột, nhưng những dấu ngoặc này không phải là một phần của dữ liệu cần phân tích. Để đọc tệp CSV đúng cách, chúng ta có thể cập nhật thuộc tính bảng trong AWS Glue để sử dụng OpenCSVSerDe.\nTruy cập vào Glue console. Trong menu điều hướng bên trái, nhấn vào Tables dưới mục Data Catalog. Trên màn hình Tables, nhấn vào bảng raw_taxi_zone_lookup. Nhấn Actions, sau đó nhấn Edit table. Cập nhật Serialization lib với org.apache.hadoop.hive.serde2.OpenCSVSerde. Xóa các tham số Serde hiện có và sau đó thêm các thông số sau: escapeChar, nhập một ký tự gạch chéo ngược \\ quoteChar, nhập dấu ngoặc kép \u0026quot; separatorChar, nhập dấu phẩy , Nhấn Save. Quay lại Athena console. Trên trang Query editor, nhấn vào biểu tượng menu hành động ⋮ bên cạnh raw_taxi_zone_lookup, sau đó nhấn Preview table. Tất cả các giá trị chuỗi không còn được bao quanh bởi dấu ngoặc kép nữa.\n"
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.3-remove-records-with-null-values/",
+	"title": "Loại bỏ các bản ghi với giá trị NULL",
+	"tags": [],
+	"description": "",
+	"content": " Nhấp vào tab Transform, chọn Custom transform. Trong Transform – Custom code, chỉ định thông tin sau: Name – Remove Records with NULL Thêm đoạn mã sau vào Code block: def MyTransform(glueContext, dfc) -\u0026gt; DynamicFrameCollection: df = dfc.select(list(dfc.keys())[0]).toDF().na.drop() results = DynamicFrame.fromDF(df, glueContext, \u0026#34;results\u0026#34;) return DynamicFrameCollection({\u0026#34;results\u0026#34;: results}, glueContext) Nhấp vào tab Transform, chọn SelectFromCollection.\nTrong Transform – SelectFromCollection, chỉ định thông tin sau:\nName – SelectFromCollection Frame index – 0 Hãy nhớ lưu công việc của bạn. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/6-visualizing/6.3-review-dataset/",
+	"title": "Xem lại bộ dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Đặt tên cho bộ dữ liệu:\nỞ góc trên bên trái của màn hình, đặt tên cho bộ dữ liệu là Athena – Transformed Yellow Trip Data. Kiểm tra chế độ Query:\nĐảm bảo rằng chế độ SPICE đã được chọn. Chuẩn bị dữ liệu (tùy chọn):\nBạn có tùy chọn thực hiện các bước chuẩn bị dữ liệu bổ sung tại đây trước khi trực quan hóa dữ liệu. Lưu và bắt đầu trực quan hóa:\nỞ góc trên bên phải của màn hình, nhấp vào public \u0026amp; visualize để lưu các thay đổi và bắt đầu trực quan hóa dữ liệu trong QuickSight. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/2-discovering_and_cataloging/2.3-review-the-metadata-in-glue-data-catalog/",
+	"title": "Xem xét metadata trong Glue Data Catalog",
+	"tags": [],
+	"description": "",
+	"content": "Glue Data Catalog chứa các tham chiếu đến dữ liệu được sử dụng làm nguồn và đích của các công việc extract, transform, and load (ETL) trong AWS Glue. Nó cũng duy trì một cái nhìn thống nhất về dữ liệu và cho phép các dịch vụ AWS khác như Athena, EMR, và Redshift Spectrum truy cập vào.\nTrong menu điều hướng bên trái, nhấn vào Tables. Trên trang Tables, nhấn vào tên raw_yellow_tripdata để xem xét metadata và thông tin schema của bảng. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/3-exploring/3.4-run-sql-queries-to-explore-the-data/",
+	"title": "Chạy các truy vấn SQL để khám phá dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Kiểm tra số lượng bản ghi của raw_yellow_tripdata. SELECT COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata; Khám phá các danh mục dữ liệu SELECT vendorid, COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata GROUP BY vendorid ORDER BY 1; SELECT pulocationid, COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata GROUP BY pulocationid ORDER BY 1; SELECT payment_type, COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata GROUP BY payment_type ORDER BY 1; Khám phá các bản ghi với Vendor ID là NULL. SELECT * FROM raw_yellow_tripdata WHERE vendorid IS NULL LIMIT 100; Khám phá các bản ghi theo thời gian. SELECT SUBSTR(tpep_pickup_datetime, 1, 7) \u0026#34;Period\u0026#34;, COUNT(*) \u0026#34;Total Records\u0026#34; FROM raw_yellow_tripdata GROUP BY SUBSTR(tpep_pickup_datetime, 1, 7) ORDER BY 1; Đếm số lượng bản ghi nằm ngoài năm 2020. SELECT COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata WHERE SUBSTR(tpep_pickup_datetime, 1, 7) NOT LIKE \u0026#39;2020%\u0026#39;; Đếm số lượng bản ghi với giá trị NULL (dựa trên Vendor ID) nằm trong năm 2020. SELECT COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata WHERE vendorid IS NULL AND SUBSTR(tpep_pickup_datetime, 1, 7) LIKE \u0026#39;2020%\u0026#39;; Đếm số lượng bản ghi nằm trong quý cuối cùng của năm 2020, loại trừ các bản ghi thiếu Vendor ID. SELECT COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata WHERE vendorid IS NOT NULL AND SUBSTR(tpep_pickup_datetime, 1, 7) LIKE \u0026#39;2020-1%\u0026#39;; Thực hiện join dữ liệu chuyến đi taxi với bảng tra cứu khu vực taxi. SELECT td.*, pu.*, do.* FROM raw_yellow_tripdata td, raw_taxi_zone_lookup pu, raw_taxi_zone_lookup do WHERE td.pulocationid = pu.locationid AND td.pulocationid = do.locationid AND vendorid IS NOT NULL AND SUBSTR(tpep_pickup_datetime, 1, 7) LIKE \u0026#39;2020-1%\u0026#39; LIMIT 100; Đếm tổng số bản ghi đã join cho quý cuối cùng của năm 2020. SELECT COUNT(*) \u0026#34;Count\u0026#34; FROM raw_yellow_tripdata td, raw_taxi_zone_lookup pu, raw_taxi_zone_lookup do WHERE td.pulocationid = pu.locationid AND td.pulocationid = do.locationid AND vendorid IS NOT NULL AND SUBSTR(tpep_pickup_datetime, 1, 7) LIKE \u0026#39;2020-1%\u0026#39;; "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/",
+	"title": "Chuyển đổi dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan Giới thiệu AWS Glue Studio AWS Glue Studio là một giao diện đồ họa giúp dễ dàng tạo, chạy và giám sát các công việc ETL trong AWS Glue. Bạn có thể trực quan hóa quy trình chuyển đổi dữ liệu, và AWS Glue Studio sẽ tạo mã Apache Spark thay cho bạn, cho phép chạy chúng liền mạch trên engine ETL không máy chủ dựa trên Apache Spark của AWS Glue.\nNội dung Tạo một công việc bằng Glue Studio Thêm một nguồn dữ liệu Loại bỏ các bản ghi với giá trị NULL Lọc các bản ghi Thêm một nguồn dữ liệu khác Kết hợp dữ liệu Thêm và kết hợp một tập dữ liệu khác Chuyển đổi dữ liệu và lưu Chạy job "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.4-filter-records/",
+	"title": "Lọc các bản ghi",
+	"tags": [],
+	"description": "",
+	"content": " Lọc các bản ghi để loại bỏ các bản ghi có giá trị Pickup DateTime không hợp lệ. Để tiết kiệm thời gian, chúng ta sẽ lọc các bản ghi từ tháng 10 năm 2020 đến tháng 12 năm 2020 nhằm giảm thời gian xử lý công việc trong quá trình workshop.\nNhấp vào tab Transform, chọn Filter. Chỉ định thông tin sau: Name – Filter - Yellow Trip Data Filter condition – tpep_pickup_datetime / matches / ^2020-1 Hãy nhớ lưu công việc của bạn. Xem lại mã script được tự động tạo ra Đi đến Script. Quan sát rằng mã script được tự động tạo ra bởi Glue Studio. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/6-visualizing/6.4-visualize-data/",
+	"title": "Trực quan hóa dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tạo trực quan hóa tổng số tiền của các chuyến taxi từ khu vực Để trực quan hóa tổng số tiền của các chuyến taxi từ khu vực, nhấp vào + Add trong menu.\nChọn loại trực quan hóa Vertical stacked bar chart, và chỉ định các trường theo hình dưới:\nBạn cũng có thể nhấp vào tiêu đề và đổi tên thành Tổng số tiền của các chuyến taxi từ các khu vực và vẽ thêm các loại biểu đồ khác để trực quan hóa dữ liệu. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/5-enriching/",
+	"title": "Làm phong phú dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan Làm phong phú dữ liệu là quá trình cải thiện dữ liệu hiện có bằng cách thêm dữ liệu từ các nguồn khác để cung cấp ngữ cảnh hoặc ý nghĩa bổ sung, giúp dữ liệu trở nên hữu ích và sâu sắc hơn trong quá trình phân tích.\nNội dung Lập danh mục dữ liệu đã chuyển đổi Xác thực dữ liệu đã chuyển đổi Làm phong phú dữ liệu đã chuyển đổi "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/5-enriching/5.3-enrich-transformed-data/",
+	"title": "Làm phong phú dữ liệu đã chuyển đổi",
+	"tags": [],
+	"description": "",
+	"content": " Chạy truy vấn sau để tạo một view nhằm làm phong phú thêm bảng với dữ liệu bổ sung. CREATE OR REPLACE VIEW v_yellow_tripdata AS SELECT CASE vendor_id WHEN 1 THEN \u0026#39;Creative Mobile\u0026#39; WHEN 2 THEN \u0026#39;VeriFone\u0026#39; ELSE \u0026#39;No Data\u0026#39; END \u0026#34;vendor_name\u0026#34;, pickup_datetime, dropoff_datetime, passenger_count, trip_distance, CASE ratecodeid WHEN 1 THEN \u0026#39;Standard Rate\u0026#39; WHEN 2 THEN \u0026#39;JFK\u0026#39; WHEN 3 THEN \u0026#39;Newark\u0026#39; WHEN 4 THEN \u0026#39;Nassau/Westchester\u0026#39; WHEN 5 THEN \u0026#39;Negotiated Fare\u0026#39; WHEN 6 THEN \u0026#39;Group Ride\u0026#39; WHEN 99 THEN \u0026#39;Special Rate\u0026#39; ELSE \u0026#39;No Data\u0026#39; END \u0026#34;rate_type\u0026#34;, store_and_fwd_flag, pu_borough, pu_zone, pu_service_zone, do_borough, do_zone, do_service_zone, CASE payment_type WHEN 1 THEN \u0026#39;Credit Card\u0026#39; WHEN 2 THEN \u0026#39;Cash\u0026#39; WHEN 3 THEN \u0026#39;No Charge\u0026#39; WHEN 4 THEN \u0026#39;Dispute\u0026#39; WHEN 5 THEN \u0026#39;Unknown\u0026#39; WHEN 6 THEN \u0026#39;Voided Trip\u0026#39; ELSE \u0026#39;No Data\u0026#39; END \u0026#34;payment_type\u0026#34;, fare_amount, extra, mta_tax, tip_amount, tolls_amount, improvement_surcharge, congestion_surcharge, total_amount FROM yellow_tripdata; Chọn Preview table để kiểm tra dữ liệu đã làm phong phú trong view v_yellow_tripdata trên Athena. Chạy truy vấn sau để lấy các thông tin chi tiết: SELECT vendor_name \u0026#34;Vendor\u0026#34;, rate_type \u0026#34;Rate Type\u0026#34;, payment_type \u0026#34;Payment Type\u0026#34;, ROUND(AVG(fare_amount), 2) \u0026#34;Fare\u0026#34;, ROUND(AVG(extra), 2) \u0026#34;Extra\u0026#34;, ROUND(AVG(mta_tax), 2) \u0026#34;MTA\u0026#34;, ROUND(AVG(tip_amount), 2) \u0026#34;Tip\u0026#34;, ROUND(AVG(tolls_amount), 2) \u0026#34;Toll\u0026#34;, ROUND(AVG(improvement_surcharge), 2) \u0026#34;Improvement\u0026#34;, ROUND(AVG(congestion_surcharge), 2) \u0026#34;Congestion\u0026#34;, ROUND(AVG(total_amount), 2) \u0026#34;Total\u0026#34; FROM v_yellow_tripdata GROUP BY vendor_name, rate_type, payment_type ORDER BY 1, 2, 3; "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.5-add-another-data-source/",
+	"title": "Thêm một nguồn dữ liệu khác",
+	"tags": [],
+	"description": "",
+	"content": "Thêm bảng tra cứu cho Taxi Pickup Zone Quay lại tab Visual. Nhấp vào tab Source, chọn S3. Trong node Data source – S3 bucket, chỉ định thông tin sau: Name – Pickup Zone Lookup Database – nyctaxi_db Table – raw_taxi_zone_lookup Hãy nhớ lưu công việc của bạn. Chỉnh sửa tên cột của bảng tra cứu Pickup Taxi Zone Đảm bảo node Amazon S3 - Pickup Zone Lookup đã được chọn. Nhấp vào tab Transform, chọn Change Schema. Chỉ định thông tin sau: Name – Change Schema - Pickup Zone Lookup Chỉnh sửa target key: locationid thành pu_location_id borough thành pu_borough zone thành pu_zone service_zone thành pu_service_zone Hãy nhớ lưu công việc của bạn. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.6-join-data/",
+	"title": "Kết hợp dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Kết hợp dữ liệu Yellow Trips với dữ liệu tra cứu Pickup Taxi Zone Nhấp vào biểu tượng Transform, chọn Join. Chỉ định thông tin sau: Name – Yellow Trips Data + Pickup Zone Lookup Node Parents: Change Schema - Pickup Zone Lookup Filter - Yellow Trip Data Dưới mục Join conditions, chọn các khóa sau: Change Schema - Pickup Zone Lookup – pu_location_id Filter - Yellow Trip Data – pulocationid Hãy nhớ lưu công việc của bạn. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/6-visualizing/",
+	"title": "Trực quan hóa dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Tổng quan Data visualization trình bày dữ liệu dưới dạng đồ họa, giúp dữ liệu dễ hiểu và tiếp thu hơn. Nó cho phép người dùng có được những thông tin chi tiết tốt hơn từ dữ liệu để đưa ra các quyết định sáng suốt.\nChúng ta sẽ truy cập dữ liệu đã được làm phong phú, hiện đang lưu trữ trong Amazon S3, sau đó trực quan hóa dữ liệu này trong Amazon QuickSight.\nGiới thiệu về Amazon QuickSight Amazon QuickSight là một dịch vụ Business Intelligence (BI) được xây dựng cho đám mây, có khả năng mở rộng, không máy chủ, có thể nhúng, và được hỗ trợ bởi Machine Learning (ML). QuickSight cho phép bạn dễ dàng tạo và xuất bản các bảng điều khiển BI tương tác bao gồm các thông tin chi tiết được hỗ trợ bởi Machine Learning.\nCác bảng điều khiển QuickSight có thể được truy cập từ bất kỳ thiết bị nào và dễ dàng nhúng vào các ứng dụng, cổng thông tin, và trang web của bạn.\nNội dung Sử dụng Amazon QuickSight lần đầu tiên Kết nối với nguồn dữ liệu Xem lại bộ dữ liệu Trực quan hóa dữ liệu "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.7-add-and-join-another-dataset/",
+	"title": "Thêm và kết hợp một tập dữ liệu khác",
+	"tags": [],
+	"description": "",
+	"content": "Thêm bảng tra cứu cho Taxi Drop-off Zone Nhấp vào biểu tượng Source, chọn S3. Trong Data source – S3 bucket node, chỉ định thông tin sau: Name – Dropoff Zone Lookup Database – nyctaxi_db Table – raw_taxi_zone_lookup Hãy nhớ lưu công việc của bạn. Chỉnh sửa tên cột của bảng tra cứu Drop-off Taxi Zone Đảm bảo rằng nút Amazon S3 - Dropoff Zone Lookup đã được chọn. Nhấp vào biểu tượng Transform, chọn Change Schema. Chỉ định thông tin sau: Name – Change Schema - Dropoff Zone Lookup Chỉnh sửa khóa đích của các cột sau: locationid thành do_location_id borough thành do_borough zone thành do_zone service_zone thành do_service_zone Hãy nhớ lưu công việc của bạn. Kết hợp dữ liệu Yellow Trips và dữ liệu tra cứu Drop-off Taxi Zone Nhấp vào biểu tượng Transform, chọn Join. Chỉ định thông tin sau: Name – Yellow Trips Data + Pickup Zone Lookup + Dropoff Zone Lookup Node Parents: Change Schema - Dropoff Zone Lookup Yellow Trips Data + Pickup Zone Lookup Glue Studio Dưới mục Join conditions, chọn các khóa sau: Change Schema - Dropoff Zone Lookup – do_location_id Yellow Trips Data + Pickup Zone Lookup – dolocationid Hãy nhớ lưu công việc của bạn. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/7-summary/",
+	"title": "Tổng kết",
+	"tags": [],
+	"description": "",
+	"content": "Quy trình xử lý dữ liệu Data Ingestion: Bạn đã ingest dữ liệu từ nhiều nguồn khác nhau vào Amazon S3, kho lưu trữ dữ liệu trung tâm. Bước này bao gồm việc thu thập và lưu trữ dữ liệu thô ở định dạng gốc để xử lý sau này.\nData Transformation: Sử dụng AWS Glue, bạn đã định nghĩa và thực hiện các công việc ETL (Extract, Transform, Load) để xử lý dữ liệu thô lưu trữ trong S3. Những công việc này đã chuyển đổi dữ liệu thành định dạng có cấu trúc phù hợp cho phân tích và báo cáo.\nData Catalog: AWS Glue Data Catalog đóng vai trò quan trọng trong việc tổ chức và quản lý metadata cho data lake của bạn. Nó cung cấp một kho lưu trữ tập trung để lưu trữ các định nghĩa schema, dòng dữ liệu và các metadata khác liên quan đến các tập dữ liệu của bạn.\nData Analysis: Với Amazon Athena, bạn có thể truy vấn và phân tích dữ liệu đã được chuyển đổi lưu trữ trong S3 bằng cách sử dụng cú pháp SQL chuẩn. Kiến trúc serverless của Athena cho phép bạn thực hiện các truy vấn ad-hoc mà không cần cấp phát hoặc quản lý cơ sở hạ tầng.\nData Visualization: Cuối cùng, bạn đã kết nối Amazon QuickSight với các nguồn dữ liệu của mình, cho phép bạn tạo ra các trực quan hóa và bảng điều khiển tương tác. QuickSight cung cấp giao diện thân thiện với người dùng để khám phá và trình bày các thông tin chi tiết về dữ liệu của bạn.\n"
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.8-transform-data-and-save-to-target/",
+	"title": "Chuyển đổi dữ liệu và lưu",
+	"tags": [],
+	"description": "",
+	"content": "Chỉnh sửa tên cột và kiểu dữ liệu của tập dữ liệu đã kết hợp Nhấp vào biểu tượng Transform, chọn Change Schema. Chỉ định thông tin sau: Name – Change Schema - Joined Data Chỉnh sửa Target key và Data type của các mục sau: vendorid thành vendor_id tpep_pickup_datetime thành pickup_datetime, string thành timestamp tpep_dropoff_datetime thành dropoff_datetime, string thành timestamp Xóa các Source keys sau: pulocationid dolocationid Hãy nhớ lưu công việc của bạn. Lưu dữ liệu đã chuyển đổi vào Amazon S3 Nhấp vào tab Target, chọn Amazon S3. Chỉ định thông tin sau: Name – Transformed Yellow Trip Data Trong tab Data target properties – S3, chỉ định các thông tin sau: Format – Parquet Compression Type – Snappy S3 Target Location – s3://serverlessanalytics-[your-account-id]-transformed/nyc-taxi/yellow-tripdata/ Hãy nhớ lưu công việc của bạn. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/8-clean_up/",
+	"title": "Dọn dẹp",
+	"tags": [],
+	"description": "",
+	"content": " Xóa CloudFormation Stack: sdlj-workshop Chọn sdlj-workshop và sau đó nhấp vào Delete Xóa dữ liệu trong S3 Chọn từng bucket để Empty, nhập permanently delete để xác nhận xóa và sau đó chọn từng bucket để Delete Xóa Crawlers: nyc-taxi-crawler, nyc-yellow-tripdata-parquet-crawler Chọn 2 crawlers sau: nyc-taxi-crawler nyc-yellow-tripdata-parquet-crawler Nhấp vào Actions, chọn Delete crawlers và nhập Delete để xác nhận xóa Xóa Glue Studio Transform: Transform NYC Taxi Trip Data Chọn Transform NYC Taxi Trip Data, sau đó nhấp vào Actions và chọn Delete job(s) Xóa Database: nyctaxi_db Chọn nyctaxi_db và sau đó nhấp vào Delete Xóa Athena – Transformed Yellow Trip Data: Analysis trong Amazon QuickSight "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/4-transforming/4.9-run-the-job/",
+	"title": "Chạy job",
+	"tags": [],
+	"description": "",
+	"content": "Chạy công việc chuyển đổi dữ liệu Ở phần góc trên bên phải của trang AWS Glue Studio, nhấp vào Run. Đi tới tab Runs để xem trạng thái của công việc. Nhấp vào Job Id để theo dõi quá trình chạy của công việc. "
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://thanhlong01052003.github.io/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
